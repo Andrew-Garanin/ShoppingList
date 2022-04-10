@@ -12,8 +12,8 @@ class TitleViewModel(val dao: ShoppingListDatabaseDao, application: Application,
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
-    private val _shoppingList = MutableLiveData<List<ShoppingListDatabaseDao.PetWithOwnerAndHousehold>>()
-    var shoppingList : LiveData<List<ShoppingListDatabaseDao.PetWithOwnerAndHousehold>>
+    private val _shoppingList = MutableLiveData<List<ShoppingListDatabaseDao.PurchaseFullInfo>>()
+    var shoppingList : LiveData<List<ShoppingListDatabaseDao.PurchaseFullInfo>>
 //        get() = _shoppingList
 
     private val _shoppingListId = MutableLiveData<Int>()
@@ -24,12 +24,12 @@ class TitleViewModel(val dao: ShoppingListDatabaseDao, application: Application,
         _shoppingListId.value = shoppingListId
 
         shoppingList = Transformations.switchMap(_shoppingListId) { _shoppingListId ->
-            filterBooks(_shoppingListId)
+            refreshShoppingList(_shoppingListId)
         }
     }
 
-    private fun filterBooks(status: Int): LiveData<List<ShoppingListDatabaseDao.PetWithOwnerAndHousehold>> {
-        return dao.getPetWithOwnerAndHousehold(status)
+    private fun refreshShoppingList(status: Int): LiveData<List<ShoppingListDatabaseDao.PurchaseFullInfo>> {
+        return dao.getShoppingListById(status)
     }
 
     override fun onCleared() {
@@ -45,7 +45,7 @@ class TitleViewModel(val dao: ShoppingListDatabaseDao, application: Application,
 
     private suspend fun getShoppingListById(id: Int) {
         withContext(Dispatchers.IO) {
-            shoppingList = dao.getPetWithOwnerAndHousehold(id)
+            shoppingList = dao.getShoppingListById(id)
         }
     }
 

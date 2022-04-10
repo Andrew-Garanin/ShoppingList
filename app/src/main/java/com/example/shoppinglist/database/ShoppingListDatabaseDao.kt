@@ -5,18 +5,6 @@ import androidx.room.*
 
 @Dao
 interface ShoppingListDatabaseDao {
-    @Transaction
-    @Query("SELECT * FROM ShoppingList WHERE shopping_list_id = :key")
-    fun getShoppingListById(key: Int):  LiveData<ShoppingListWithPurchases>
-
-    data class ShoppingListWithPurchases(
-        @Embedded val shoppingList: ShoppingList,
-        @Relation(
-            parentColumn = "shopping_list_id",
-            entityColumn = "shopping_list_id"
-        )
-        val purchases: List<Purchase>
-    )
 
     @Transaction
     @Query("Select Purchase.*, ShoppingList.shopping_list_name, PurchaseName.name, MeasuringUnit.name\n" +
@@ -27,9 +15,9 @@ interface ShoppingListDatabaseDao {
             "            LEFT OUTER JOIN MeasuringUnit\n" +
             "            ON Purchase.measuring_unit_id = MeasuringUnit.id\n" +
             "            WHERE Purchase.shopping_list_id = :key")
-    fun getPetWithOwnerAndHousehold(key: Int): LiveData<List<PetWithOwnerAndHousehold>>
+    fun getShoppingListById(key: Int): LiveData<List<PurchaseFullInfo>>
 
-    data class PetWithOwnerAndHousehold (
+    data class PurchaseFullInfo (
         @Embedded
         val purchase: Purchase,
         @Relation(entity = ShoppingList::class, parentColumn = "shopping_list_id",entityColumn = "shopping_list_id")
@@ -40,14 +28,14 @@ interface ShoppingListDatabaseDao {
         val measuringUnit: MeasuringUnit
     )
 
-    @Update
-    fun updatePurchase(purchase: Purchase)
-
     @Query("UPDATE Purchase SET is_bought = :status WHERE id = :id")
     fun changeStatus(id: Int, status: Int)
 
     @Query("DELETE FROM Purchase WHERE id = :id")
     fun deletePurchase(id: Int)
+
+    @Update
+    fun updatePurchase(purchase: Purchase)
 
     @Insert
     fun insertPurchase(purchase: Purchase)

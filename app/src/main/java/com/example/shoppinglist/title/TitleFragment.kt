@@ -1,18 +1,14 @@
 package com.example.shoppinglist.title
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.shoppinglist.R
-import com.example.shoppinglist.database.Purchase
 import com.example.shoppinglist.database.ShoppingListDatabase
 import com.example.shoppinglist.databinding.FragmentTitleBinding
 
@@ -29,7 +25,7 @@ class TitleFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
-        //----------------------Настройки ViewModel----------------------
+        //----------------------ViewModel----------------------
         val viewModelFactory = TitleViewModelFactory(dao, application, 1)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(TitleViewModel::class.java)
@@ -40,12 +36,11 @@ class TitleFragment : Fragment() {
 
                 actionBar?.title = newshoppingList[0].shoppingList.shopping_list_name
 
-                val adapter = com.example.shoppinglist.title.ShoppingListAdapter(viewModel)
+                val adapter = ShoppingListAdapter(viewModel)
                 binding.contentList.adapter = adapter
 
                 adapter.data = newshoppingList
             }
-
         })
         viewModel.onGetShoppingListById(1)
 

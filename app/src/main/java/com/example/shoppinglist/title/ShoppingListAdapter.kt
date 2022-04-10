@@ -1,21 +1,16 @@
 package com.example.shoppinglist.title
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
-import com.example.shoppinglist.database.Purchase
 import com.example.shoppinglist.database.ShoppingListDatabaseDao
 
 
 class ShoppingListAdapter(var viewModel: TitleViewModel): RecyclerView.Adapter<PurchaseItemViewHolder>(){
 
-    var data = listOf<ShoppingListDatabaseDao.PetWithOwnerAndHousehold>()
+    var data = listOf<ShoppingListDatabaseDao.PurchaseFullInfo>()
         set(value) {
             field = value
             notifyDataSetChanged()

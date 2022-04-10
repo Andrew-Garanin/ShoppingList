@@ -1,16 +1,11 @@
-package com.example.shoppinglist
+package com.example.shoppinglist.addnewpurchase
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Spinner
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
+import com.example.shoppinglist.R
 
 class AddNewPurchaseFragment : DialogFragment() {
 

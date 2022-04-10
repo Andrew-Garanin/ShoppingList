@@ -17,20 +17,16 @@
         android:gravity="center"
         />
 
-
-
     <LinearLayout
-        android:id="@+id/iuo"
+        android:id="@+id/linearLayout1"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_below="@id/title"
-
         android:gravity="center">
 
         <TextView
-            android:id="@+id/textRulesContent1"
+            android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="false"
@@ -47,28 +43,28 @@
             android:typeface="normal" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinnerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:textSize="20sp"
             android:entries="@array/catNames"
-            app:layout_constraintStart_toStartOf="@+id/textRulesContent1" />
+            app:layout_constraintStart_toStartOf="@+id/textViewName" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ghjk"
+        android:id="@+id/linearLayout2"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
 
-        android:layout_below="@id/iuo"
+        android:layout_below="@id/linearLayout1"
         android:gravity="center">
 
         <TextView
-            android:id="@+id/textRulesContent12"
+            android:id="@+id/textViewNumeric"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="false"
@@ -85,7 +81,7 @@
             android:typeface="normal" />
 
         <EditText
-            android:id="@+id/ad21"
+            android:id="@+id/textEditNumeric"
             android:layout_width="55dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="10dp"
@@ -97,31 +93,32 @@
         </EditText>
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinnerMeasureUnit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:textSize="20sp"
             android:entries="@array/catNames"
-            app:layout_constraintStart_toStartOf="@+id/ad21">
+            app:layout_constraintStart_toStartOf="@+id/textEditNumeric">
 
         </Spinner>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ghjk"
+        android:layout_below="@id/linearLayout2"
         android:orientation="horizontal">
 
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
-            android:text="Cancel"
+            android:text="Отмена"
             android:background="#046907"
             android:textColor="#fff"
-            android:id="@+id/yes"
+            android:id="@+id/close"
             />
 
         <View android:layout_width="2dp" android:layout_height="match_parent"
@@ -132,10 +129,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
-            android:text="Done"
+            android:text="Ок"
             android:background="#046907"
             android:textColor="#fff"
-            android:id="@+id/no"
+            android:id="@+id/ok"
             />
 
     </LinearLayout>

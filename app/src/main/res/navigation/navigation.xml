@@ -16,7 +16,7 @@
     </fragment>
     <dialog
         android:id="@+id/addNewPurchaseFragment"
-        android:name="com.example.shoppinglist.AddNewPurchaseFragment"
+        android:name="com.example.shoppinglist.addnewpurchase.AddNewPurchaseFragment"
         android:label="fragment_add_new_purchase"
         tools:layout="@layout/fragment_add_new_purchase" />
 </navigation>
