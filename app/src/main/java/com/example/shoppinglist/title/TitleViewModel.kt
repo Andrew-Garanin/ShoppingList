@@ -20,30 +20,28 @@ class TitleViewModel(val dao: ShoppingListDatabaseDao, application: Application,
     val shoppingListId: MutableLiveData<Int>
         get() = _shoppingListId
 
+    private val _shoppingListName = MutableLiveData<String>()
+    var shoppingListName: LiveData<String>
+ //       get() = _shoppingListName
+
     init {
         _shoppingListId.value = shoppingListId
 
         shoppingList = Transformations.switchMap(_shoppingListId) { _shoppingListId ->
             refreshShoppingList(_shoppingListId)
         }
+
+        shoppingListName = Transformations.switchMap(_shoppingListId) { _shoppingListId ->
+            refreshShoppingListName(_shoppingListId)
+        }
+    }
+
+    private fun refreshShoppingListName(id: Int): LiveData<String> {
+        return dao.getShoppingListName(id)
     }
 
     private fun refreshShoppingList(status: Int): LiveData<List<ShoppingListDatabaseDao.PurchaseFullInfo>> {
         return dao.getShoppingListById(status)
-    }
-
-
-
-    fun onGetShoppingListById(id: Int){
-        uiScope.launch {
-            getShoppingListById(id)
-        }
-    }
-
-    private suspend fun getShoppingListById(id: Int) {
-        withContext(Dispatchers.IO) {
-            shoppingList = dao.getShoppingListById(id)
-        }
     }
 
     fun onDeletePurchase(id: Int){

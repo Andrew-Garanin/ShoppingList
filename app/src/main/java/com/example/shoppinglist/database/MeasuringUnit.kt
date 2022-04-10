@@ -15,4 +15,9 @@ class MeasuringUnit (
     @ColumnInfo(name = "name")
     @NonNull
     val name: String = ""
-)
+
+) {
+    override fun toString(): String {
+        return name
+    }
+}

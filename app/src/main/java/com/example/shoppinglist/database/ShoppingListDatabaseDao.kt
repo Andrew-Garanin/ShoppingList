@@ -49,6 +49,9 @@ interface ShoppingListDatabaseDao {
     @Query("DELETE FROM ShoppingList WHERE shopping_list_id = :id")
     fun deleteShoppingList(id: Int)
 
+    @Query("SELECT shopping_list_name FROM ShoppingList WHERE shopping_list_id = :key")
+    fun getShoppingListName(key:Int): LiveData<String>
+
     @Query("SELECT * FROM PurchaseName")
     fun getAllPurchaseNames(): LiveData<List<PurchaseName>>
 

@@ -30,22 +30,23 @@ class TitleFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(TitleViewModel::class.java)
 
+        val adapter = ShoppingListAdapter(viewModel)
+        binding.contentList.adapter = adapter
+
         viewModel.shoppingList.observe(viewLifecycleOwner, { newshoppingList ->
-            if (newshoppingList.isNotEmpty()) {
-                val actionBar = (activity as androidx.appcompat.app.AppCompatActivity?)!!.supportActionBar
-
-                actionBar?.title = newshoppingList[0].shoppingList.shopping_list_name
-
-                val adapter = ShoppingListAdapter(viewModel)
-                binding.contentList.adapter = adapter
-
+            if (newshoppingList.isNotEmpty())
                 adapter.data = newshoppingList
+        })
+
+        viewModel.shoppingListName.observe(viewLifecycleOwner, { newshoppingListName ->
+            if (newshoppingListName != null) {
+                val actionBar = (activity as androidx.appcompat.app.AppCompatActivity?)!!.supportActionBar
+                actionBar?.title = newshoppingListName
             }
         })
-        viewModel.onGetShoppingListById(1)
 
         binding.buttonAddNewContent.setOnClickListener{
-            it.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToAddNewPurchaseFragment())
+            it.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToAddNewPurchaseFragment(viewModel.shoppingListId.value!!))
         }
 
         setHasOptionsMenu(true)
@@ -60,6 +61,4 @@ class TitleFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return  NavigationUI.onNavDestinationSelected(item, findNavController()) ||  super.onOptionsItemSelected(item)
     }
-
-
 }

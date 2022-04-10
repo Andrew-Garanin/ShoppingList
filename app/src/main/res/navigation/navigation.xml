@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/titleFragment"
         android:name="com.example.shoppinglist.title.TitleFragment"
-        android:label="TitleFragment"
+
         tools:layout="@layout/fragment_title">
         <action
             android:id="@+id/action_titleFragment_to_addNewPurchaseFragment"
@@ -18,5 +18,9 @@
         android:id="@+id/addNewPurchaseFragment"
         android:name="com.example.shoppinglist.addnewpurchase.AddNewPurchaseFragment"
         android:label="fragment_add_new_purchase"
-        tools:layout="@layout/fragment_add_new_purchase" />
+        tools:layout="@layout/fragment_add_new_purchase" >
+        <argument
+            android:name="shoppingListId"
+            app:argType="integer" />
+    </dialog>
 </navigation>
