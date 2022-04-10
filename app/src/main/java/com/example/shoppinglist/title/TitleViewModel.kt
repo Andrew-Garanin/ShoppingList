@@ -32,10 +32,7 @@ class TitleViewModel(val dao: ShoppingListDatabaseDao, application: Application,
         return dao.getShoppingListById(status)
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
+
 
     fun onGetShoppingListById(id: Int){
         uiScope.launch {

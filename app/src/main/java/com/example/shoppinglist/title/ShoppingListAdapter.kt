@@ -1,5 +1,6 @@
 package com.example.shoppinglist.title
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
@@ -17,9 +18,10 @@ class ShoppingListAdapter(var viewModel: TitleViewModel): RecyclerView.Adapter<P
         }
     override fun getItemCount() = data.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PurchaseItemViewHolder, position: Int) {
         val item = data[position]
-        holder.text.text = item.purchaseName.name
+        holder.text.text = item.purchaseName.name + " " + item.purchase.amount.toString() +item.measuringUnit.name
 
         holder.checkBox.isChecked = item.purchase.is_bought != 0
 
