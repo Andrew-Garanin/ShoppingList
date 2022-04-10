@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.shoppinglist.R
+import com.example.shoppinglist.database.Purchase
 import com.example.shoppinglist.database.ShoppingListDatabase
 import com.example.shoppinglist.databinding.FragmentTitleBinding
 
@@ -33,19 +35,23 @@ class TitleFragment : Fragment() {
             .get(TitleViewModel::class.java)
 
         viewModel.shoppingList.observe(viewLifecycleOwner, { newshoppingList ->
+            if (newshoppingList.isNotEmpty()) {
+                val actionBar = (activity as androidx.appcompat.app.AppCompatActivity?)!!.supportActionBar
 
-            val actionBar = (activity as AppCompatActivity?)!!.supportActionBar
+                actionBar?.title = newshoppingList[0].shoppingList.shopping_list_name
 
-            actionBar?.title = newshoppingList.shoppingList.shopping_list_name
+                val adapter = com.example.shoppinglist.title.ShoppingListAdapter(viewModel)
+                binding.contentList.adapter = adapter
 
-            val adapter = ShoppingListAdapter(viewModel)
-            binding.contentList.adapter = adapter
+                adapter.data = newshoppingList
+            }
 
-            if (newshoppingList != null)
-                adapter.data = newshoppingList.purchases
         })
         viewModel.onGetShoppingListById(1)
 
+        binding.buttonAddNewContent.setOnClickListener{
+            it.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToAddNewPurchaseFragment())
+        }
 
         setHasOptionsMenu(true)
         return binding.root

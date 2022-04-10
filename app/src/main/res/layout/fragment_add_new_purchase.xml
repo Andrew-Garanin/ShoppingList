@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:gravity="center">
+
+    <TextView android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Новая покупка"
+        android:background="#ff7e22"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:gravity="center"
+        />
+
+
+
+    <LinearLayout
+        android:id="@+id/iuo"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/title"
+
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textRulesContent1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+
+            android:layout_marginTop="15dp"
+
+            android:layout_marginBottom="15dp"
+
+            android:text="Наименование"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="#EC9D2A"
+            android:textSize="20sp"
+            android:typeface="normal" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:textSize="20sp"
+            android:entries="@array/catNames"
+            app:layout_constraintStart_toStartOf="@+id/textRulesContent1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ghjk"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:layout_below="@id/iuo"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textRulesContent12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+
+            android:layout_marginTop="15dp"
+
+            android:layout_marginBottom="15dp"
+            android:lineSpacingExtra="12sp"
+            android:text="Кол-во"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="#EC9D2A"
+            android:textSize="20sp"
+            android:typeface="normal" />
+
+        <EditText
+            android:id="@+id/ad21"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:minWidth="55dp"
+            android:textAlignment="center"
+            android:minHeight="48dp">
+
+        </EditText>
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:textSize="20sp"
+            android:entries="@array/catNames"
+            app:layout_constraintStart_toStartOf="@+id/ad21">
+
+        </Spinner>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ghjk"
+        android:orientation="horizontal">
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="Cancel"
+            android:background="#046907"
+            android:textColor="#fff"
+            android:id="@+id/yes"
+            />
+
+        <View android:layout_width="2dp" android:layout_height="match_parent"
+            android:background="#fff"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="Done"
+            android:background="#046907"
+            android:textColor="#fff"
+            android:id="@+id/no"
+            />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

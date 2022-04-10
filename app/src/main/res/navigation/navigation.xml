@@ -9,5 +9,14 @@
         android:id="@+id/titleFragment"
         android:name="com.example.shoppinglist.title.TitleFragment"
         android:label="TitleFragment"
-        tools:layout="@layout/fragment_title"/>
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_titleFragment_to_addNewPurchaseFragment"
+            app:destination="@id/addNewPurchaseFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addNewPurchaseFragment"
+        android:name="com.example.shoppinglist.AddNewPurchaseFragment"
+        android:label="fragment_add_new_purchase"
+        tools:layout="@layout/fragment_add_new_purchase" />
 </navigation>

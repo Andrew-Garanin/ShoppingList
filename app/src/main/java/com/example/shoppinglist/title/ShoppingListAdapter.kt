@@ -10,14 +10,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
 import com.example.shoppinglist.database.Purchase
-
-
-
+import com.example.shoppinglist.database.ShoppingListDatabaseDao
 
 
 class ShoppingListAdapter(var viewModel: TitleViewModel): RecyclerView.Adapter<PurchaseItemViewHolder>(){
 
-    var data = listOf<Purchase>()
+    var data = listOf<ShoppingListDatabaseDao.PetWithOwnerAndHousehold>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -26,16 +24,16 @@ class ShoppingListAdapter(var viewModel: TitleViewModel): RecyclerView.Adapter<P
 
     override fun onBindViewHolder(holder: PurchaseItemViewHolder, position: Int) {
         val item = data[position]
-        holder.text.text = item.name
+        holder.text.text = item.purchaseName.name
 
-        holder.checkBox.isChecked = item.is_bought != 0
+        holder.checkBox.isChecked = item.purchase.is_bought != 0
 
         holder.deleteButton.setOnClickListener {
-            viewModel.onDeletePurchase(item.id)
+            viewModel.onDeletePurchase(item.purchase.id)
         }
 
         holder.checkBox.setOnCheckedChangeListener{ buttonView, isChecked ->
-            viewModel.onChangePurchaseStatus(item.id, if (isChecked) 1 else 0)
+            viewModel.onChangePurchaseStatus(item.purchase.id, if (isChecked) 1 else 0)
         }
 
 

@@ -11,7 +11,14 @@ import androidx.room.PrimaryKey
     ForeignKey(entity = ShoppingList::class,
         parentColumns = ["shopping_list_id"],
         childColumns = ["shopping_list_id"],
-        onDelete = CASCADE)])
+        onDelete = CASCADE),
+    ForeignKey(entity = PurchaseName::class,
+        parentColumns = ["id"],
+        childColumns = ["name_id"],
+        onDelete = CASCADE),
+    ForeignKey(entity = MeasuringUnit::class,
+        parentColumns = ["id"],
+        childColumns = ["measuring_unit_id"])])
 data class Purchase (
 
     @PrimaryKey(autoGenerate = true)
@@ -19,9 +26,9 @@ data class Purchase (
     @ColumnInfo(name ="id")
     var id: Int = 0,
 
-    @ColumnInfo(name = "name")
+    @ColumnInfo(name = "name_id")
     @NonNull
-    val name: String = "",
+    val name_id: Int = 0,
 
     @ColumnInfo(name = "amount")
     @NonNull
@@ -33,6 +40,10 @@ data class Purchase (
 
     @ColumnInfo(name = "shopping_list_id")
     @NonNull
-    val shopping_list_id: Int = 0
+    val shopping_list_id: Int = 0,
+
+    @ColumnInfo(name = "measuring_unit_id")
+    @NonNull
+    val measuring_unit_id: Int = 0,
 
 )

@@ -18,6 +18,28 @@ interface ShoppingListDatabaseDao {
         val purchases: List<Purchase>
     )
 
+    @Transaction
+    @Query("Select Purchase.*, ShoppingList.shopping_list_name, PurchaseName.name, MeasuringUnit.name\n" +
+            "            from Purchase LEFT OUTER JOIN ShoppingList\n" +
+            "            ON Purchase.shopping_list_id = ShoppingList.shopping_list_id\n" +
+            "            LEFT OUTER JOIN PurchaseName\n" +
+            "            ON Purchase.name_id = PurchaseName.id\n" +
+            "            LEFT OUTER JOIN MeasuringUnit\n" +
+            "            ON Purchase.measuring_unit_id = MeasuringUnit.id\n" +
+            "            WHERE Purchase.shopping_list_id = :key")
+    fun getPetWithOwnerAndHousehold(key: Int): LiveData<List<PetWithOwnerAndHousehold>>
+
+    data class PetWithOwnerAndHousehold (
+        @Embedded
+        val purchase: Purchase,
+        @Relation(entity = ShoppingList::class, parentColumn = "shopping_list_id",entityColumn = "shopping_list_id")
+        val shoppingList: ShoppingList,
+        @Relation(entity = PurchaseName::class, parentColumn = "name_id", entityColumn = "id")
+        val purchaseName: PurchaseName,
+        @Relation(entity = MeasuringUnit::class, parentColumn = "measuring_unit_id", entityColumn = "id")
+        val measuringUnit: MeasuringUnit
+    )
+
     @Update
     fun updatePurchase(purchase: Purchase)
 
