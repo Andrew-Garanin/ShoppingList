@@ -1,9 +1,11 @@
 package com.example.shoppinglist.title
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
 import com.example.shoppinglist.database.ShoppingListDatabaseDao
@@ -35,7 +37,8 @@ class ShoppingListAdapter(var viewModel: TitleViewModel): RecyclerView.Adapter<P
 
 
         holder.card.setOnClickListener{
-            //it.findNavController().navigate(ContentListFragmentDirections.actionContentListFragmentToEditContentFragment(item.dareID, item.dareString,ContentType.DARE))
+            val intent = Intent()
+            it.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToEditPurchaseFragment(item.purchase))
         }
     }
 

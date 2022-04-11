@@ -1,24 +1,22 @@
-package com.example.shoppinglist.addnewpurchase
+package com.example.shoppinglist.editpurchase
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import com.example.shoppinglist.database.Purchase
 import com.example.shoppinglist.database.ShoppingListDatabaseDao
 import kotlinx.coroutines.*
 
-class AddNewPurchaseViewModel(val dao: ShoppingListDatabaseDao, application: Application, shoppingListId: Int) : AndroidViewModel(application) {
+class EditPurchaseViewModel(val dao: ShoppingListDatabaseDao, application: Application, purchase: Purchase) : AndroidViewModel(application) {
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
     var purchaseNames = dao.getAllPurchaseNames()
     var measuringUnits = dao.getAllMeasureUnits()
 
-    private val _shoppingListId = MutableLiveData<Int>()
-    val shoppingListId: MutableLiveData<Int>
-        get() = _shoppingListId
+    private val _purchase = MutableLiveData<Purchase>()
+    val purchase: MutableLiveData<Purchase>
+        get() = _purchase
 
     private val _purchaseNameSpinnerPosition = MutableLiveData<Int>()
     val purchaseNameSpinnerPosition: MutableLiveData<Int>
@@ -29,7 +27,7 @@ class AddNewPurchaseViewModel(val dao: ShoppingListDatabaseDao, application: App
         get() = _measuringUnitSpinnerPosition
 
     init {
-        _shoppingListId.value = shoppingListId
+        _purchase.value = purchase
     }
 
     fun setPurchaseNameSpinnerPosition(position: Int){
@@ -45,16 +43,20 @@ class AddNewPurchaseViewModel(val dao: ShoppingListDatabaseDao, application: App
         viewModelJob.cancel()
     }
 
-    fun onInsertPurchase(name_id: Int, amount: Double, measuring_unit_id: Int){
-        val newPurchase = Purchase(name_id=name_id, amount=amount, is_bought = 0, shopping_list_id = shoppingListId.value!!, measuring_unit_id = measuring_unit_id)
+    fun onEditPurchase(name_id: Int, amount: Double, measuring_unit_id: Int){
+        val newPurchase = Purchase(id=_purchase.value!!.id,
+                                   name_id=name_id, amount=amount,
+                                   is_bought = _purchase.value!!.is_bought,
+                                   shopping_list_id = _purchase.value!!.shopping_list_id,
+                                   measuring_unit_id = measuring_unit_id)
         uiScope.launch {
-            insertPurchase(newPurchase)
+            editPurchase(newPurchase)
         }
     }
 
-    private suspend fun insertPurchase(newPurchase: Purchase) {
+    private suspend fun editPurchase(newPurchase: Purchase) {
         withContext(Dispatchers.IO) {
-            dao.insertPurchase(newPurchase)
+            dao.updatePurchase(newPurchase)
         }
     }
 }

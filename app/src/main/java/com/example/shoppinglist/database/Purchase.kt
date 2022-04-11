@@ -6,6 +6,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "Purchase", foreignKeys = [
     ForeignKey(entity = ShoppingList::class,
@@ -46,4 +47,4 @@ data class Purchase (
     @NonNull
     val measuring_unit_id: Int = 0,
 
-)
+): Serializable

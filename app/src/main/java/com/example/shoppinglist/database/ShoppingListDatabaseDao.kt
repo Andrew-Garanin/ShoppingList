@@ -2,6 +2,7 @@ package com.example.shoppinglist.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import java.io.Serializable
 
 @Dao
 interface ShoppingListDatabaseDao {

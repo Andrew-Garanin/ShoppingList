@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_titleFragment_to_addNewPurchaseFragment"
             app:destination="@id/addNewPurchaseFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_editPurchaseFragment"
+            app:destination="@id/editPurchaseFragment" />
     </fragment>
     <dialog
         android:id="@+id/addNewPurchaseFragment"
@@ -22,5 +25,14 @@
         <argument
             android:name="shoppingListId"
             app:argType="integer" />
+    </dialog>
+    <dialog
+        android:id="@+id/editPurchaseFragment"
+        android:name="com.example.shoppinglist.editpurchase.EditPurchaseFragment"
+        android:label="EditPurchaseFragment"
+        tools:layout="@layout/fragment_edit_purchase">
+        <argument
+            android:name="purchase"
+            app:argType="com.example.shoppinglist.database.Purchase" />
     </dialog>
 </navigation>
