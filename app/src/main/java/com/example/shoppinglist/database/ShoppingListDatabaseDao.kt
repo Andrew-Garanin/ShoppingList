@@ -58,4 +58,7 @@ interface ShoppingListDatabaseDao {
 
     @Query("SELECT * FROM MeasuringUnit")
     fun getAllMeasureUnits(): LiveData<List<MeasuringUnit>>
+
+    @Query("Select ShoppingList.shopping_list_id From ShoppingList Order by ShoppingList.shopping_list_id desc LIMIT 1")
+    fun getLastShoppingListId(): LiveData<Int>
 }

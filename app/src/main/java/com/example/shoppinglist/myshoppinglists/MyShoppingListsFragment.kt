@@ -44,7 +44,7 @@ class MyShoppingListsFragment : Fragment() {
         })
 
         binding.buttonAddNewContent.setOnClickListener{
-            //it.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToAddNewPurchaseFragment(viewModel.shoppingListId.value!!))
+            it.findNavController().navigate(MyShoppingListsFragmentDirections.actionMyShoppingListsFragmentToAddNewShoppingListFragment())
         }
 
         return binding.root

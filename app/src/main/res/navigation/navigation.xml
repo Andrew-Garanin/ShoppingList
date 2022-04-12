@@ -47,6 +47,28 @@
         <action
             android:id="@+id/action_myShoppingListsFragment_to_titleFragment"
             app:destination="@id/titleFragment"
+            app:popUpTo="@id/titleFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_myShoppingListsFragment_to_addNewShoppingListFragment"
+            app:destination="@id/addNewShoppingListFragment" />
+        <action
+            android:id="@+id/action_myShoppingListsFragment_to_copyShoppingListFragment"
+            app:destination="@id/copyShoppingListFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/addNewShoppingListFragment"
+        android:name="com.example.shoppinglist.addnewshoppinglist.AddNewShoppingListFragment"
+        android:label="AddNewShoppingListFragment"
+        tools:layout="@layout/fragment_add_new_shopping_list"/>
+    <dialog
+        android:id="@+id/copyShoppingListFragment"
+        android:name="com.example.shoppinglist.copyshoppinglist.CopyShoppingListFragment"
+        android:label="CopyShoppingListFragment"
+        tools:layout="@layout/fragment_copy_shopping_list">
+
+        <argument
+            android:name="shoppingListId"
+            app:argType="integer" />
+    </dialog>
 </navigation>

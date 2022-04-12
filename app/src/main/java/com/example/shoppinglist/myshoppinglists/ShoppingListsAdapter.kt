@@ -24,6 +24,9 @@ class ShoppingListsAdapter(var viewModel: MyShoppingListsViewModel): RecyclerVie
         holder.deleteButton.setOnClickListener {
             viewModel.onDeleteShoppingList(item.shopping_list_id)
         }
+        holder.copyButton.setOnClickListener {
+            it.findNavController().navigate(MyShoppingListsFragmentDirections.actionMyShoppingListsFragmentToCopyShoppingListFragment(item.shopping_list_id))
+        }
         holder.card.setOnClickListener{
             it.findNavController().navigate(MyShoppingListsFragmentDirections.actionMyShoppingListsFragmentToTitleFragment(item.shopping_list_id))
         }

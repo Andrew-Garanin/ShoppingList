@@ -10,4 +10,5 @@ class ShoppingListItemViewHolder(itemView: CardView): RecyclerView.ViewHolder(it
     val card: CardView = itemView.findViewById(R.id.cardItemShoppingList)
     val text: TextView = itemView.findViewById(R.id.textItemShoppingList)
     val deleteButton: Button = itemView.findViewById(R.id.deleteButtonShoppingList)
+    val copyButton: Button = itemView.findViewById(R.id.copyButtonShoppingList)
 }

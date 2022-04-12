@@ -26,11 +26,17 @@
             android:textSize="26sp" />
 
         <Button
+            android:id="@+id/copyButtonShoppingList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Копировать" />
+
+        <Button
             android:id="@+id/deleteButtonShoppingList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-
             android:text="Удалить" />
 
     </LinearLayout>
