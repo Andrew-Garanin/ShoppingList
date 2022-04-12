@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/myShoppingLists"
+        android:id="@+id/myShoppingListsFragment"
         android:title="Мои списки" />
 
     <item

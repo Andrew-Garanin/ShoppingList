@@ -42,7 +42,7 @@ interface ShoppingListDatabaseDao {
     fun insertPurchase(purchase: Purchase)
 
     @Query("SELECT * FROM ShoppingList")
-    fun getShoppingListList(): List<ShoppingList>
+    fun getShoppingLists(): LiveData<List<ShoppingList>>
 
     @Insert
     fun insertShoppingList(shoppingList: ShoppingList)

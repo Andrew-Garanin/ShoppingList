@@ -16,6 +16,10 @@
         <action
             android:id="@+id/action_titleFragment_to_editPurchaseFragment"
             app:destination="@id/editPurchaseFragment" />
+        <argument
+            android:name="shoppingListId"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <dialog
         android:id="@+id/addNewPurchaseFragment"
@@ -35,4 +39,14 @@
             android:name="purchase"
             app:argType="com.example.shoppinglist.database.Purchase" />
     </dialog>
+    <fragment
+        android:id="@+id/myShoppingListsFragment"
+        android:name="com.example.shoppinglist.myshoppinglists.MyShoppingListsFragment"
+        android:label="Мои списки"
+        tools:layout="@layout/fragment_my_shopping_lists">
+        <action
+            android:id="@+id/action_myShoppingListsFragment_to_titleFragment"
+            app:destination="@id/titleFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

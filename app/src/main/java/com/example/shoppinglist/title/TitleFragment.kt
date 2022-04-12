@@ -7,8 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.example.shoppinglist.R
+import com.example.shoppinglist.addnewpurchase.AddNewPurchaseFragmentArgs
 import com.example.shoppinglist.database.ShoppingListDatabase
 import com.example.shoppinglist.databinding.FragmentTitleBinding
 
@@ -22,11 +24,12 @@ class TitleFragment : Fragment() {
     ): View {
         val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,
             R.layout.fragment_title, container, false)
+        val titleFragmentArgs by navArgs<TitleFragmentArgs>()
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
         //----------------------ViewModel----------------------
-        val viewModelFactory = TitleViewModelFactory(dao, application, 1)
+        val viewModelFactory = TitleViewModelFactory(dao, application, titleFragmentArgs.shoppingListId)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(TitleViewModel::class.java)
 
