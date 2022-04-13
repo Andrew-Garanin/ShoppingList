@@ -7,6 +7,10 @@
         android:title="Мои списки" />
 
     <item
-        android:id="@+id/purchaseNames"
+        android:id="@+id/purchaseNames1"
         android:title="Настройки наименований" />
+
+    <item
+        android:id="@+id/purchaseNames2"
+        android:title="Настройки единиц измерения" />
 </menu>

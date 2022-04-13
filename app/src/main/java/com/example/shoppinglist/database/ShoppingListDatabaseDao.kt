@@ -61,4 +61,7 @@ interface ShoppingListDatabaseDao {
 
     @Query("Select ShoppingList.shopping_list_id From ShoppingList Order by ShoppingList.shopping_list_id desc LIMIT 1")
     fun getLastShoppingListId(): LiveData<Int>
+
+    @Query( "Select * From Purchase where Purchase.shopping_list_id = :key")
+    fun getPurchasesByShoppingListID(key:Int): LiveData<List<Purchase>>
 }

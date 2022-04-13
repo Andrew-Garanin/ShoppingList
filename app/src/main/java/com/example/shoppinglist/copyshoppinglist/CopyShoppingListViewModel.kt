@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.example.shoppinglist.database.Purchase
 import com.example.shoppinglist.database.ShoppingList
 import com.example.shoppinglist.database.ShoppingListDatabaseDao
 import kotlinx.coroutines.*
@@ -17,20 +18,24 @@ class CopyShoppingListViewModel(val dao: ShoppingListDatabaseDao, application: A
     val shoppingListId: MutableLiveData<Int>
         get() = _shoppingListId
 
-    private val _newshoppingListId = MutableLiveData<Int>()
-    var newshoppingListId: LiveData<Int>
-        get() = _newshoppingListId
+    //private val _newshoppingListId = MutableLiveData<Int>()
+    var newshoppingListId = dao.getLastShoppingListId()
+    //    get() = _newshoppingListId
+
+    private val _PurchasesToCopy = MutableLiveData<List<Purchase>>()
+    var PurchasesToCopy : LiveData<List<Purchase>>
+        //get() = _PurchasesToCopy
 
     init{
         _shoppingListId.value = shoppingListId
 
-        newshoppingListId = Transformations.switchMap(_shoppingListId) {d ->
-            getLastShoppingListId()
+        PurchasesToCopy = Transformations.switchMap(_shoppingListId) {_shoppingListId ->
+            getPurchasesByShoppingListID(_shoppingListId)
         }
     }
 
     fun onAddNewShoppingList(shoppingListName: String){
-        val newShoppingList = ShoppingList(shopping_list_name = shoppingListName)
+        val newShoppingList = ShoppingList(shopping_list_id = newshoppingListId.value!!+1,shopping_list_name = shoppingListName)
         uiScope.launch {
             addNewShoppingList(newShoppingList)
         }
@@ -48,7 +53,26 @@ class CopyShoppingListViewModel(val dao: ShoppingListDatabaseDao, application: A
 //        }
 //    }
 
-    private fun getLastShoppingListId(): LiveData<Int> {
-        return dao.getLastShoppingListId()
+    private fun getPurchasesByShoppingListID(key: Int): LiveData<List<Purchase>> {
+        return dao.getPurchasesByShoppingListID(key)
+    }
+
+    fun onCopyPurchases(){
+        PurchasesToCopy.value?.forEach{
+
+            val newPurchase = it.copy(id=0,shopping_list_id = newshoppingListId.value!!+1)
+
+            uiScope.launch {
+                addNewPurchase(newPurchase)
+            }
+        }
+
+
+    }
+
+    private suspend fun addNewPurchase(purchase: Purchase) {
+        withContext(Dispatchers.IO) {
+            dao.insertPurchase(purchase)
+        }
     }
 }

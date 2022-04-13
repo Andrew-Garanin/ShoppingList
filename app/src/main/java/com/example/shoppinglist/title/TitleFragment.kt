@@ -37,7 +37,7 @@ class TitleFragment : Fragment() {
         binding.contentList.adapter = adapter
 
         viewModel.shoppingList.observe(viewLifecycleOwner, { newshoppingList ->
-            if (newshoppingList.isNotEmpty())
+            //if (newshoppingList.isNotEmpty())
                 adapter.data = newshoppingList
         })
 

@@ -37,15 +37,21 @@ class CopyShoppingListFragment : DialogFragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(CopyShoppingListViewModel::class.java)
 
-        viewModel.newshoppingListId.observe(viewLifecycleOwner, { newshoppingListId ->
-            Log.i("asdaw",newshoppingListId.toString())
+        viewModel.newshoppingListId.observe(viewLifecycleOwner, {
+            // Log.i("asdaw",newshoppingListId.toString())
+        })
+
+        viewModel.PurchasesToCopy.observe(viewLifecycleOwner, {newshoppingListId->
+
         })
 
         binding.buttonAddNewContentOK.setOnClickListener {
             if(binding.editTextAddNewContent.text.toString().trim() != "") {
                 viewModel.onAddNewShoppingList(binding.editTextAddNewContent.text.toString())
                 //viewModel.onGetLastShoppingListId()
-                //dismiss()
+
+                viewModel.onCopyPurchases()
+                dismiss()
             }
             else
                 Toast.makeText(application,  "asdaw1111", Toast.LENGTH_SHORT).show()
