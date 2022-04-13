@@ -11,9 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.shoppinglist.R
 import com.example.shoppinglist.database.ShoppingListDatabase
 import com.example.shoppinglist.databinding.FragmentAddNewShoppingListBinding
-import com.example.shoppinglist.databinding.FragmentMyShoppingListsBinding
-import com.example.shoppinglist.myshoppinglists.MyShoppingListsViewModel
-import com.example.shoppinglist.myshoppinglists.MyShoppingListsViewModelFactory
+
 
 class AddNewShoppingListFragment : DialogFragment() {
 

@@ -71,4 +71,34 @@
             android:name="shoppingListId"
             app:argType="integer" />
     </dialog>
+    <fragment
+        android:id="@+id/purchaseNamesListFragment"
+        android:name="com.example.shoppinglist.purchasenameslist.PurchaseNamesListFragment"
+        android:label="Наименования"
+        tools:layout="@layout/fragment_purchase_names_list"
+        >
+        <action
+            android:id="@+id/action_purchaseNamesListFragment_to_addNewPurchaseNameFragment"
+            app:destination="@id/addNewPurchaseNameFragment" />
+        <action
+            android:id="@+id/action_purchaseNamesListFragment_to_editPurchaseNameFragment"
+            app:destination="@id/editPurchaseNameFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addNewPurchaseNameFragment"
+        android:name="com.example.shoppinglist.addnewpurchasename.AddNewPurchaseNameFragment"
+        android:label="AddNewPurchaseNameFragment"
+        tools:layout="@layout/fragment_add_new_purchase_name"/>
+    <dialog
+        android:id="@+id/editPurchaseNameFragment"
+        android:name="com.example.shoppinglist.editpurchasename.EditPurchaseNameFragment"
+        android:label="EditPurchaseNameFragment"
+        tools:layout="@layout/fragment_edit_purchase_name">
+        <argument
+            android:name="purchaseNameID"
+            app:argType="integer" />
+        <argument
+            android:name="purchaseNameString"
+            app:argType="string" />
+    </dialog>
 </navigation>

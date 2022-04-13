@@ -50,6 +50,9 @@ interface ShoppingListDatabaseDao {
     @Query("DELETE FROM ShoppingList WHERE shopping_list_id = :id")
     fun deleteShoppingList(id: Int)
 
+    @Query("DELETE FROM PurchaseName WHERE id = :id")
+    fun deletePurchaseName(id: Int)
+
     @Query("SELECT shopping_list_name FROM ShoppingList WHERE shopping_list_id = :key")
     fun getShoppingListName(key:Int): LiveData<String>
 
@@ -64,4 +67,10 @@ interface ShoppingListDatabaseDao {
 
     @Query( "Select * From Purchase where Purchase.shopping_list_id = :key")
     fun getPurchasesByShoppingListID(key:Int): LiveData<List<Purchase>>
+
+    @Insert
+    fun insertPurchaseName(purchaseName: PurchaseName)
+
+    @Update
+    fun updatePurchaseName(purchaseName: PurchaseName)
 }

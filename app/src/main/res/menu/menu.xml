@@ -7,7 +7,7 @@
         android:title="Мои списки" />
 
     <item
-        android:id="@+id/purchaseNames1"
+        android:id="@+id/purchaseNamesListFragment"
         android:title="Настройки наименований" />
 
     <item
