@@ -53,6 +53,9 @@ interface ShoppingListDatabaseDao {
     @Query("DELETE FROM PurchaseName WHERE id = :id")
     fun deletePurchaseName(id: Int)
 
+    @Query("DELETE FROM MeasuringUnit WHERE id = :id")
+    fun deleteMeasuringUnit(id: Int)
+
     @Query("SELECT shopping_list_name FROM ShoppingList WHERE shopping_list_id = :key")
     fun getShoppingListName(key:Int): LiveData<String>
 
@@ -70,6 +73,9 @@ interface ShoppingListDatabaseDao {
 
     @Insert
     fun insertPurchaseName(purchaseName: PurchaseName)
+
+    @Insert
+    fun insertMeasuringUnit(measuringUnit: MeasuringUnit)
 
     @Update
     fun updatePurchaseName(purchaseName: PurchaseName)

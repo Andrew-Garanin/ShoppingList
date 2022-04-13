@@ -19,7 +19,8 @@ import java.io.Serializable
         onDelete = CASCADE),
     ForeignKey(entity = MeasuringUnit::class,
         parentColumns = ["id"],
-        childColumns = ["measuring_unit_id"])])
+        childColumns = ["measuring_unit_id"],
+        onDelete = CASCADE)])
 data class Purchase (
 
     @PrimaryKey(autoGenerate = true)

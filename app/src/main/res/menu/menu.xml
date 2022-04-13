@@ -11,6 +11,6 @@
         android:title="Настройки наименований" />
 
     <item
-        android:id="@+id/purchaseNames2"
+        android:id="@+id/measuringUnitsListFragment"
         android:title="Настройки единиц измерения" />
 </menu>

@@ -101,4 +101,20 @@
             android:name="purchaseNameString"
             app:argType="string" />
     </dialog>
+    <fragment
+        android:id="@+id/measuringUnitsListFragment"
+        android:name="com.example.shoppinglist.measuringunitslist.MeasuringUnitsListFragment"
+        android:label="Единицы измерения"
+        tools:layout="@layout/fragment_measuring_units_list">
+
+        <action
+            android:id="@+id/action_measuringUnitsListFragment_to_addNewMeasuringUnitFragment"
+            app:destination="@id/addNewMeasuringUnitFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addNewMeasuringUnitFragment"
+        android:name="com.example.shoppinglist.addnewmeasuringunit.AddNewMeasuringUnitFragment"
+        android:label="fragment_add_new_measuring_unit"
+        tools:layout="@layout/fragment_add_new_measuring_unit"
+        />
 </navigation>
