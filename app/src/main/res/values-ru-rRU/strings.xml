@@ -28,4 +28,7 @@
     <string name="measuring_units_settings">Настройки единиц измерения</string>
     <string name="successfull">Успешно</string>
     <string name="enter_count">Введите кол-во</string>
+    <string name="new_list">Новый лист</string>
+    <string name="list_name">Имя листа</string>
+    <string name="copy_list">Копировать лист</string>
 </resources>

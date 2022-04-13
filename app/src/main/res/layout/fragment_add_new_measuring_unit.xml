@@ -28,7 +28,7 @@
             android:layout_below="@id/title"
 
 
-            android:gravity="center"
+            android:gravity="start"
             android:orientation="horizontal">
 
             <TextView
@@ -58,7 +58,7 @@
                 android:inputType="text"
                 android:minWidth="55dp"
                 android:minHeight="48dp"
-                android:textAlignment="center">
+                android:textAlignment="textStart">
 
             </EditText>
 

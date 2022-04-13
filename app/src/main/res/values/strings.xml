@@ -27,4 +27,7 @@
     <string name="measuring_units_settings">Measuring Units Settings</string>
     <string name="successfull">Successfull</string>
     <string name="enter_count">Enter Count</string>
+    <string name="new_list">New List</string>
+    <string name="list_name">List Name</string>
+    <string name="copy_list">List Copy</string>
 </resources>
