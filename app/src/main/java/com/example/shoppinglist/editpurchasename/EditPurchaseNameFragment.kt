@@ -37,15 +37,17 @@ class EditPurchaseNameFragment : DialogFragment() {
             val text = binding.textEdit.text.toString().trim()
             if (text != ""){
                 viewModel.onUpdatePurchaseName(text)
-                Toast.makeText(application, "it.context.resources.getString(R.string.question_added_successfully)", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(application, it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
                 dismiss()
             }
+            else
+                Toast.makeText(application, it.context.resources.getString(R.string.enter_name), Toast.LENGTH_SHORT).show()
         }
         binding.close.setOnClickListener {
             dismiss()
         }
         binding.textEdit.setText(viewModel.purchaseNameString.value)
+        
         return binding.root
     }
 }

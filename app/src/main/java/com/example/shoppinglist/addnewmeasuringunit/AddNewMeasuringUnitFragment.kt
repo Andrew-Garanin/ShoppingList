@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
@@ -33,8 +34,15 @@ class AddNewMeasuringUnitFragment : DialogFragment() {
             .get(AddNewMeasuringUnitViewModel::class.java)
 
         binding.ok.setOnClickListener {
-            viewModel.onAddNewMeasuringUnit(binding.textEdit.text.toString())
-            dismiss()
+            val text = binding.textEdit.text.toString().trim()
+            if (text != "") {
+                viewModel.onAddNewMeasuringUnit(text)
+                Toast.makeText(application, it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
+                dismiss()
+            }
+            else
+                Toast.makeText(application, it.context.resources.getString(R.string.enter_measuring_unit), Toast.LENGTH_SHORT).show()
+
         }
 
         binding.close.setOnClickListener {

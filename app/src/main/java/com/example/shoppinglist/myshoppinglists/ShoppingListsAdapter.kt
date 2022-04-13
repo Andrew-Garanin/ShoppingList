@@ -2,6 +2,7 @@ package com.example.shoppinglist.myshoppinglists
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,7 @@ class ShoppingListsAdapter(var viewModel: MyShoppingListsViewModel): RecyclerVie
 
         holder.deleteButton.setOnClickListener {
             viewModel.onDeleteShoppingList(item.shopping_list_id)
+            Toast.makeText(viewModel.getApplication(), it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
         }
         holder.copyButton.setOnClickListener {
             it.findNavController().navigate(MyShoppingListsFragmentDirections.actionMyShoppingListsFragmentToCopyShoppingListFragment(item.shopping_list_id))

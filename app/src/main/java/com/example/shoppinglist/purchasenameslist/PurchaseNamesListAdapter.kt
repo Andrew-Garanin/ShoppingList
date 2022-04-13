@@ -24,7 +24,7 @@ class PurchaseNamesListAdapter(var viewModel: PurchaseNamesListViewModel): Recyc
 
         holder.deleteButton.setOnClickListener {
             viewModel.onDeletePurchaseName(item.id)
-            Toast.makeText(viewModel.getApplication(), "it.context.resources.getString(R.string.question_deleted_successfully)", Toast.LENGTH_SHORT).show()
+            Toast.makeText(viewModel.getApplication(), it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
         }
 
         holder.card.setOnClickListener{

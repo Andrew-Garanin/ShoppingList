@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShoppingList</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_measuring_unit">Новая ед. измерения</string>
+    <string name="measuring_unit">Ед. измерения</string>
+    <string name="enter_new_measuring_unit">Введите новую ед. измерения</string>
+    <string name="cancel">Отмена</string>
+    <string name="ok">Ок</string>
+    <string name="new_purchase">Новая покупка</string>
+    <string name="name">Наименование</string>
+    <string name="count">Кол-во</string>
+    <string name="new_name">Новое наименование</string>
+    <string name="enter_new_name">Введите новое наименование</string>
+    <string name="enter_new_list_name">Введите имя нового списка</string>
+    <string name="edit">Редактировать</string>
+    <string name="enter_measuring_unit">Введите ед. измерения</string>
+    <string name="enter_name">Введите наименование</string>
+    <string name="add_measuring_unit">Добавить ед. измерения</string>
+    <string name="add_list">Добавить список</string>
+    <string name="add_name">Добавить наименование</string>
+    <string name="add">Добавить</string>
+    <string name="delete">Удалить</string>
+    <string name="copy">Копировать</string>
+    <string name="names">Наименования</string>
+    <string name="my_lists">Мои списки</string>
+    <string name="names_settings">Настройки наименований</string>
+    <string name="measuring_units_settings">Настройки единиц измерения</string>
+    <string name="successfull">Успешно</string>
+    <string name="enter_count">Введите кол-во</string>
+</resources>

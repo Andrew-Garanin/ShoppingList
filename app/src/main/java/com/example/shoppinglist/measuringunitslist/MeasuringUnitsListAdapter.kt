@@ -8,10 +8,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
 import com.example.shoppinglist.database.MeasuringUnit
-import com.example.shoppinglist.database.PurchaseName
-import com.example.shoppinglist.purchasenameslist.PurchaseNamesListFragmentDirections
-import com.example.shoppinglist.purchasenameslist.PurchaseNamesListViewHolder
-import com.example.shoppinglist.purchasenameslist.PurchaseNamesListViewModel
 
 class MeasuringUnitsListAdapter(var viewModel: MeasuringUnitsListViewModel): RecyclerView.Adapter<MeasuringUnitsListViewHolder>(){
 
@@ -28,7 +24,7 @@ class MeasuringUnitsListAdapter(var viewModel: MeasuringUnitsListViewModel): Rec
 
         holder.deleteButton.setOnClickListener {
             viewModel.onDeleteMeasuringUnit(item.id)
-            Toast.makeText(viewModel.getApplication(), "it.context.resources.getString(R.string.question_deleted_successfully)", Toast.LENGTH_SHORT).show()
+            Toast.makeText(viewModel.getApplication(), it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
         }
 
         holder.card.setOnClickListener{

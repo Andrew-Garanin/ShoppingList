@@ -101,20 +101,18 @@ class EditPurchaseFragment : DialogFragment() {
             binding.spinnerMeasureUnit.setSelection(newMeasuringUnitSpinnerPosition)
         })
 
-//        viewModel.purchase.observe(viewLifecycleOwner, { newPurchase ->
-//            binding.textEditNumeric.setText(newPurchase.amount.toString())
-//        })
-
 
         binding.textEditNumeric.setText(viewModel.purchase.value!!.amount.toString())
 
         binding.ok.setOnClickListener {
-            if ( binding.textEditNumeric.text.toString() != "") {
-                viewModel.onEditPurchase((binding.spinnerName.selectedItem as PurchaseName).id, binding.textEditNumeric.text.toString().toDouble(), (binding.spinnerMeasureUnit.selectedItem as MeasuringUnit).id)
+            val text = binding.textEditNumeric.text.toString().trim()
+            if ( text != "") {
+                viewModel.onEditPurchase((binding.spinnerName.selectedItem as PurchaseName).id, text.toDouble(), (binding.spinnerMeasureUnit.selectedItem as MeasuringUnit).id)
+                Toast.makeText(application, it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
                 dismiss()
             }
             else
-                Toast.makeText(application, "asdasd", Toast.LENGTH_SHORT).show()
+                Toast.makeText(application, it.context.resources.getString(R.string.enter_count), Toast.LENGTH_SHORT).show()
         }
 
         binding.close.setOnClickListener {

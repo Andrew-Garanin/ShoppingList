@@ -46,15 +46,15 @@ class CopyShoppingListFragment : DialogFragment() {
         })
 
         binding.buttonAddNewContentOK.setOnClickListener {
-            if(binding.editTextAddNewContent.text.toString().trim() != "") {
-                viewModel.onAddNewShoppingList(binding.editTextAddNewContent.text.toString())
-                //viewModel.onGetLastShoppingListId()
-
+            val text = binding.editTextAddNewContent.text.toString().trim()
+            if( text != "") {
+                viewModel.onAddNewShoppingList(text)
                 viewModel.onCopyPurchases()
+                Toast.makeText(application, it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
                 dismiss()
             }
             else
-                Toast.makeText(application,  "asdaw1111", Toast.LENGTH_SHORT).show()
+                Toast.makeText(application, it.context.resources.getString(R.string.enter_name), Toast.LENGTH_SHORT).show()
         }
 
         return binding.root

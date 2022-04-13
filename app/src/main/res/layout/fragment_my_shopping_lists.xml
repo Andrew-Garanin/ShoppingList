@@ -29,7 +29,7 @@
             android:drawablePadding="-15sp"
             android:background="@android:color/transparent"
             android:textColor="@color/black"
-            android:text="Добавить список"
+            android:text="@string/add_list"
             android:drawableLeft="@drawable/ic_baseline_add_circle_24" />
 
 

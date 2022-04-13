@@ -4,13 +4,13 @@
 
     <item
         android:id="@+id/myShoppingListsFragment"
-        android:title="Мои списки" />
+        android:title="@string/my_lists" />
 
     <item
         android:id="@+id/purchaseNamesListFragment"
-        android:title="Настройки наименований" />
+        android:title="@string/names_settings" />
 
     <item
         android:id="@+id/measuringUnitsListFragment"
-        android:title="Настройки единиц измерения" />
+        android:title="@string/measuring_units_settings" />
 </menu>

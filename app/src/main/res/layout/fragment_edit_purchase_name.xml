@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:background="#ff7e22"
             android:gravity="center"
-            android:text="Редактировать"
+            android:text="@string/edit"
             android:textColor="#fff"
             android:textSize="30sp" />
 
@@ -41,7 +41,7 @@
 
                 android:layout_marginBottom="15dp"
                 android:lineSpacingExtra="12sp"
-                android:text="Наименование"
+                android:text="@string/name"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="#EC9D2A"
@@ -54,7 +54,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Введите наименование"
+                android:hint="@string/enter_name"
                 android:inputType="text"
                 android:minWidth="55dp"
                 android:minHeight="48dp"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:background="#046907"
-                android:text="Отмена"
+                android:text="@string/cancel"
                 android:textColor="#fff" />
 
             <View
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:background="#046907"
-                android:text="Ок"
+                android:text="@string/ok"
                 android:textColor="#fff" />
 
         </LinearLayout>

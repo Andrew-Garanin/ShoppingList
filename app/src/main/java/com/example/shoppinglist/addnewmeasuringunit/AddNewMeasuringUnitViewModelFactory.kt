@@ -3,7 +3,6 @@ package com.example.shoppinglist.addnewmeasuringunit
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.shoppinglist.addnewpurchasename.AddNewPurchaseNameViewModel
 import com.example.shoppinglist.database.ShoppingListDatabaseDao
 
 class AddNewMeasuringUnitViewModelFactory (

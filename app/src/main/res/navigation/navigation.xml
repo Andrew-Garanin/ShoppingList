@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/myShoppingListsFragment"
         android:name="com.example.shoppinglist.myshoppinglists.MyShoppingListsFragment"
-        android:label="Мои списки"
+        android:label="@string/my_lists"
         tools:layout="@layout/fragment_my_shopping_lists">
         <action
             android:id="@+id/action_myShoppingListsFragment_to_titleFragment"
@@ -74,9 +74,8 @@
     <fragment
         android:id="@+id/purchaseNamesListFragment"
         android:name="com.example.shoppinglist.purchasenameslist.PurchaseNamesListFragment"
-        android:label="Наименования"
-        tools:layout="@layout/fragment_purchase_names_list"
-        >
+        android:label="@string/names"
+        tools:layout="@layout/fragment_purchase_names_list">
         <action
             android:id="@+id/action_purchaseNamesListFragment_to_addNewPurchaseNameFragment"
             app:destination="@id/addNewPurchaseNameFragment" />
@@ -104,7 +103,7 @@
     <fragment
         android:id="@+id/measuringUnitsListFragment"
         android:name="com.example.shoppinglist.measuringunitslist.MeasuringUnitsListFragment"
-        android:label="Единицы измерения"
+        android:label="@string/measuring_unit"
         tools:layout="@layout/fragment_measuring_units_list">
 
         <action

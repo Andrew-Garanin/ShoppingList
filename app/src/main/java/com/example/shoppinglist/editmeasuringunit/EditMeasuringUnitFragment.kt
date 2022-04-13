@@ -38,15 +38,17 @@ class EditMeasuringUnitFragment : DialogFragment() {
             val text = binding.textEdit.text.toString().trim()
             if (text != ""){
                 viewModel.onUpdateMeasuringUnit(text)
-                Toast.makeText(application, "it.context.resources.getString(R.string.question_added_successfully)", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(application, it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
                 dismiss()
             }
+            else
+                Toast.makeText(application, it.context.resources.getString(R.string.enter_measuring_unit), Toast.LENGTH_SHORT).show()
         }
         binding.close.setOnClickListener {
             dismiss()
         }
         binding.textEdit.setText(viewModel.measuringUnitString.value)
+
         return binding.root
     }
 

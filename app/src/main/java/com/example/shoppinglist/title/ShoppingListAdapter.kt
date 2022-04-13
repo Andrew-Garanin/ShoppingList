@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,7 @@ class ShoppingListAdapter(var viewModel: TitleViewModel): RecyclerView.Adapter<P
 
         holder.deleteButton.setOnClickListener {
             viewModel.onDeletePurchase(item.purchase.id)
+            Toast.makeText(viewModel.getApplication(), it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
         }
 
         holder.checkBox.setOnCheckedChangeListener{ buttonView, isChecked ->
@@ -37,7 +39,6 @@ class ShoppingListAdapter(var viewModel: TitleViewModel): RecyclerView.Adapter<P
 
 
         holder.card.setOnClickListener{
-            val intent = Intent()
             it.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToEditPurchaseFragment(item.purchase))
         }
     }

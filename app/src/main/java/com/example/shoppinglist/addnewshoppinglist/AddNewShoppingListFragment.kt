@@ -33,12 +33,14 @@ class AddNewShoppingListFragment : DialogFragment() {
             .get(AddNewShoppingListViewModel::class.java)
 
         binding.buttonAddNewContentOK.setOnClickListener {
-            if(binding.editTextAddNewContent.text.toString().trim() != "") {
-                viewModel.onAddNewShoppingList(binding.editTextAddNewContent.text.toString())
+            val text = binding.editTextAddNewContent.text.toString().trim()
+            if( text != "") {
+                viewModel.onAddNewShoppingList(text)
+                Toast.makeText(application,  it.context.resources.getString(R.string.successfull), Toast.LENGTH_SHORT).show()
                 dismiss()
             }
             else
-                Toast.makeText(application,  "asdaw", Toast.LENGTH_SHORT).show()
+                Toast.makeText(application,  it.context.resources.getString(R.string.enter_name), Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
