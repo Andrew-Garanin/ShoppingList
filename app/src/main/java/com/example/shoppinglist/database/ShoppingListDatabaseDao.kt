@@ -79,4 +79,7 @@ interface ShoppingListDatabaseDao {
 
     @Update
     fun updatePurchaseName(purchaseName: PurchaseName)
+
+    @Update
+    fun updateMeasuringUnit(measuringUnit: MeasuringUnit)
 }

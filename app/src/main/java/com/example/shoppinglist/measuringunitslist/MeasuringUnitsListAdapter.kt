@@ -32,7 +32,7 @@ class MeasuringUnitsListAdapter(var viewModel: MeasuringUnitsListViewModel): Rec
         }
 
         holder.card.setOnClickListener{
-           // it.findNavController().navigate(PurchaseNamesListFragmentDirections.actionPurchaseNamesListFragmentToEditPurchaseNameFragment(item.id, item.name))
+            it.findNavController().navigate(MeasuringUnitsListFragmentDirections.actionMeasuringUnitsListFragmentToEditMeasuringUnitFragment(item.id, item.name))
         }
     }
 

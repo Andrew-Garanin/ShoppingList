@@ -110,6 +110,9 @@
         <action
             android:id="@+id/action_measuringUnitsListFragment_to_addNewMeasuringUnitFragment"
             app:destination="@id/addNewMeasuringUnitFragment" />
+        <action
+            android:id="@+id/action_measuringUnitsListFragment_to_editMeasuringUnitFragment"
+            app:destination="@id/editMeasuringUnitFragment" />
     </fragment>
     <dialog
         android:id="@+id/addNewMeasuringUnitFragment"
@@ -117,4 +120,17 @@
         android:label="fragment_add_new_measuring_unit"
         tools:layout="@layout/fragment_add_new_measuring_unit"
         />
+    <dialog
+        android:id="@+id/editMeasuringUnitFragment"
+        android:name="com.example.shoppinglist.editmeasuringunit.EditMeasuringUnitFragment"
+        android:label="EditMeasuringUnitFragment"
+        tools:layout="@layout/fragment_edit_measuring_unit"
+        >
+        <argument
+            android:name="measuringUnitID"
+            app:argType="integer" />
+        <argument
+            android:name="measuringUnitString"
+            app:argType="string" />
+    </dialog>
 </navigation>
