@@ -23,14 +23,14 @@
             android:id="@+id/buttonAddNewContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:drawablePadding="-15sp"
             android:background="@android:color/transparent"
-            android:textColor="@color/white"
+            android:drawableLeft="@drawable/ic_baseline_add_circle_24"
+            android:drawablePadding="-15sp"
             android:text="@string/add_measuring_unit"
-            android:drawableLeft="@drawable/ic_baseline_add_circle_24" />
+            android:textColor="@color/white" />
 
 
     </RelativeLayout>
