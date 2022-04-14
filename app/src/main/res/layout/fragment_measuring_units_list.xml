@@ -6,7 +6,7 @@
     <RelativeLayout android:id="@+id/ContentListRelativeLayout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/white">
+        android:background="@color/primary">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contentList"
@@ -28,7 +28,7 @@
             android:layout_centerInParent="true"
             android:drawablePadding="-15sp"
             android:background="@android:color/transparent"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="@string/add_measuring_unit"
             android:drawableLeft="@drawable/ic_baseline_add_circle_24" />
 

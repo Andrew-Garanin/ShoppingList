@@ -8,15 +8,15 @@
         android:padding="5dp"
         android:gravity="center">
 
-        <TextView android:id="@+id/title"
+        <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/edit"
-            android:background="#ff7e22"
-            android:textColor="#fff"
-            android:textSize="30sp"
+            android:background="@color/primary"
             android:gravity="center"
-            />
+            android:text="@string/edit"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
 
         <LinearLayout
             android:id="@+id/linearLayout1"
@@ -39,7 +39,7 @@
                 android:text="@string/name"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
-                android:textColor="#EC9D2A"
+                android:textColor="@color/primary"
                 android:textSize="20sp"
                 android:typeface="normal" />
 
@@ -76,7 +76,7 @@
                 android:text="@string/count"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
-                android:textColor="#EC9D2A"
+                android:textColor="@color/primary"
                 android:textSize="20sp"
                 android:typeface="normal" />
 
@@ -116,8 +116,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:text="@string/cancel"
-                android:background="#046907"
-                android:textColor="#fff"
+                android:background="@color/primary"
+                android:textColor="@color/white"
                 android:id="@+id/close"
                 />
 
@@ -130,8 +130,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:text="@string/ok"
-                android:background="#046907"
-                android:textColor="#fff"
+                android:background="@color/primary"
+                android:textColor="@color/white"
                 android:id="@+id/ok"
                 />
 
