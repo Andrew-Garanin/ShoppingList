@@ -12,17 +12,13 @@ class TitleViewModel(val dao: ShoppingListDatabaseDao, application: Application,
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
 
-    private val _shoppingList = MutableLiveData<List<ShoppingListDatabaseDao.PurchaseFullInfo>>()
     var shoppingList : LiveData<List<ShoppingListDatabaseDao.PurchaseFullInfo>>
-//        get() = _shoppingList
 
     private val _shoppingListId = MutableLiveData<Int>()
     val shoppingListId: MutableLiveData<Int>
         get() = _shoppingListId
 
-    private val _shoppingListName = MutableLiveData<String>()
     var shoppingListName: LiveData<String>
- //       get() = _shoppingListName
 
     init {
         _shoppingListId.value = shoppingListId
@@ -67,5 +63,4 @@ class TitleViewModel(val dao: ShoppingListDatabaseDao, application: Application,
             dao.changeStatus(id, is_bought)
         }
     }
-
 }

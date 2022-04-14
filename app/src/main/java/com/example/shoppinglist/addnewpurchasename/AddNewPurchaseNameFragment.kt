@@ -20,14 +20,14 @@ class AddNewPurchaseNameFragment : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding = DataBindingUtil.inflate<FragmentAddNewPurchaseNameBinding>(inflater,
             R.layout.fragment_add_new_purchase_name, container, false)
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
-        //----------------------ViewModel----------------------
+        //======================ViewModel======================
         val viewModelFactory = AddNewPurchaseNameViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(AddNewPurchaseNameViewModel::class.java)
@@ -46,7 +46,6 @@ class AddNewPurchaseNameFragment : DialogFragment() {
         binding.close.setOnClickListener {
             dismiss()
         }
-
         return binding.root
     }
 }

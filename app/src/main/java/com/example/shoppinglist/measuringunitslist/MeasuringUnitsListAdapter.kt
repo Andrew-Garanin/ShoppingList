@@ -10,12 +10,12 @@ import com.example.shoppinglist.R
 import com.example.shoppinglist.database.MeasuringUnit
 
 class MeasuringUnitsListAdapter(var viewModel: MeasuringUnitsListViewModel): RecyclerView.Adapter<MeasuringUnitsListViewHolder>(){
-
     var data = listOf<MeasuringUnit>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
+
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: MeasuringUnitsListViewHolder, position: Int) {

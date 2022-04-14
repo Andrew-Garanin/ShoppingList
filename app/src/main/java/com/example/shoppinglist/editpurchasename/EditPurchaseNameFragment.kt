@@ -1,7 +1,6 @@
 package com.example.shoppinglist.editpurchasename
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,20 +14,18 @@ import com.example.shoppinglist.database.ShoppingListDatabase
 import com.example.shoppinglist.databinding.FragmentEditPurchaseNameBinding
 
 class EditPurchaseNameFragment : DialogFragment() {
-
     private lateinit var viewModel: EditPurchaseNameViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentEditPurchaseNameBinding>(inflater, R.layout.fragment_edit_purchase_name, container, false)
         val addNewContentFragmentArgs by navArgs<EditPurchaseNameFragmentArgs>()
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
-        //----------------------Настройки ViewModel----------------------
+        //=========================Настройки ViewModel=========================
         val viewModelFactory = EditPurchaseNameViewModelFactory(dao, application, addNewContentFragmentArgs.purchaseNameID, addNewContentFragmentArgs.purchaseNameString)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(EditPurchaseNameViewModel::class.java)
@@ -43,11 +40,12 @@ class EditPurchaseNameFragment : DialogFragment() {
             else
                 Toast.makeText(application, it.context.resources.getString(R.string.enter_name), Toast.LENGTH_SHORT).show()
         }
+
         binding.close.setOnClickListener {
             dismiss()
         }
+
         binding.textEdit.setText(viewModel.purchaseNameString.value)
-        
         return binding.root
     }
 }

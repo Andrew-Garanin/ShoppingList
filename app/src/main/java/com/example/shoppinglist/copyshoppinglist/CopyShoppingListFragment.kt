@@ -1,8 +1,6 @@
 package com.example.shoppinglist.copyshoppinglist
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +10,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.shoppinglist.R
-
 import com.example.shoppinglist.database.ShoppingListDatabase
-
 import com.example.shoppinglist.databinding.FragmentCopyShoppingListBinding
 
 class CopyShoppingListFragment : DialogFragment() {
@@ -24,7 +20,7 @@ class CopyShoppingListFragment : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding = DataBindingUtil.inflate<FragmentCopyShoppingListBinding>(inflater,
             R.layout.fragment_copy_shopping_list, container, false)
@@ -32,21 +28,21 @@ class CopyShoppingListFragment : DialogFragment() {
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
-        //----------------------ViewModel----------------------
+        //=======================ViewModel=======================
         val viewModelFactory = CopyShoppingListViewModelFactory(dao, application, copyShoppingListFragmentArgs.shoppingListId)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(CopyShoppingListViewModel::class.java)
 
         viewModel.newshoppingListId.observe(viewLifecycleOwner, {
-            // Log.i("asdaw",newshoppingListId.toString())
-        })
-
-        viewModel.PurchasesToCopy.observe(viewLifecycleOwner, {newshoppingListId->
 
         })
 
-        binding.buttonAddNewContentOK.setOnClickListener {
-            val text = binding.editTextAddNewContent.text.toString().trim()
+        viewModel.PurchasesToCopy.observe(viewLifecycleOwner, {
+
+        })
+
+        binding.buttonOK.setOnClickListener {
+            val text = binding.editText.text.toString().trim()
             if( text != "") {
                 viewModel.onAddNewShoppingList(text)
                 viewModel.onCopyPurchases()
@@ -56,7 +52,6 @@ class CopyShoppingListFragment : DialogFragment() {
             else
                 Toast.makeText(application, it.context.resources.getString(R.string.enter_name), Toast.LENGTH_SHORT).show()
         }
-
         return binding.root
     }
 

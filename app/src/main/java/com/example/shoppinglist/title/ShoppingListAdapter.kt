@@ -1,7 +1,6 @@
 package com.example.shoppinglist.title
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -37,7 +36,6 @@ class ShoppingListAdapter(var viewModel: TitleViewModel): RecyclerView.Adapter<P
             viewModel.onChangePurchaseStatus(item.purchase.id, if (isChecked) 1 else 0)
         }
 
-
         holder.card.setOnClickListener{
             it.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToEditPurchaseFragment(item.purchase))
         }
@@ -49,5 +47,4 @@ class ShoppingListAdapter(var viewModel: TitleViewModel): RecyclerView.Adapter<P
             .inflate(R.layout.purchase_item_view, parent, false) as CardView
         return PurchaseItemViewHolder(view)
     }
-
 }

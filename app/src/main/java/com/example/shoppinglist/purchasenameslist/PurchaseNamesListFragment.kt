@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import com.example.shoppinglist.R
 import com.example.shoppinglist.database.ShoppingListDatabase
 import com.example.shoppinglist.databinding.FragmentPurchaseNamesListBinding
@@ -20,14 +19,12 @@ class PurchaseNamesListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentPurchaseNamesListBinding>(inflater, R.layout.fragment_purchase_names_list, container, false)
-
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
-        //----------------------Настройки ViewModel----------------------
+        //=============================Настройки ViewModel=============================
         val viewModelFactory = PurchaseNamesListViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(PurchaseNamesListViewModel::class.java)
@@ -46,5 +43,4 @@ class PurchaseNamesListFragment : Fragment() {
 
         return binding.root
     }
-
 }

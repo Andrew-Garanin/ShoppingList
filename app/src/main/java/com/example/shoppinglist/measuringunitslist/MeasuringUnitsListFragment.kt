@@ -11,11 +11,6 @@ import androidx.navigation.findNavController
 import com.example.shoppinglist.R
 import com.example.shoppinglist.database.ShoppingListDatabase
 import com.example.shoppinglist.databinding.FragmentMeasuringUnitsListBinding
-import com.example.shoppinglist.databinding.FragmentPurchaseNamesListBinding
-import com.example.shoppinglist.purchasenameslist.PurchaseNamesListAdapter
-import com.example.shoppinglist.purchasenameslist.PurchaseNamesListFragmentDirections
-import com.example.shoppinglist.purchasenameslist.PurchaseNamesListViewModel
-import com.example.shoppinglist.purchasenameslist.PurchaseNamesListViewModelFactory
 
 class MeasuringUnitsListFragment : Fragment() {
     private lateinit var viewModel: MeasuringUnitsListViewModel
@@ -23,13 +18,12 @@ class MeasuringUnitsListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentMeasuringUnitsListBinding>(inflater, R.layout.fragment_measuring_units_list, container, false)
-
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
-        //----------------------Настройки ViewModel----------------------
+        //============================Настройки ViewModel============================
         val viewModelFactory = MeasuringUnitsListViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(MeasuringUnitsListViewModel::class.java)
@@ -48,5 +42,4 @@ class MeasuringUnitsListFragment : Fragment() {
 
         return binding.root
     }
-
 }

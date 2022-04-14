@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.example.shoppinglist.R
-import com.example.shoppinglist.addnewpurchase.AddNewPurchaseFragmentArgs
 import com.example.shoppinglist.database.ShoppingListDatabase
 import com.example.shoppinglist.databinding.FragmentTitleBinding
 
@@ -28,7 +27,7 @@ class TitleFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
-        //----------------------ViewModel----------------------
+        //==============================ViewModel==============================
         val viewModelFactory = TitleViewModelFactory(dao, application, titleFragmentArgs.shoppingListId)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(TitleViewModel::class.java)
@@ -37,8 +36,7 @@ class TitleFragment : Fragment() {
         binding.contentList.adapter = adapter
 
         viewModel.shoppingList.observe(viewLifecycleOwner, { newshoppingList ->
-            //if (newshoppingList.isNotEmpty())
-                adapter.data = newshoppingList
+            adapter.data = newshoppingList
         })
 
         viewModel.shoppingListName.observe(viewLifecycleOwner, { newshoppingListName ->

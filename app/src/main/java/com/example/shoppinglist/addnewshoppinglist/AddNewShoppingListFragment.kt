@@ -20,14 +20,14 @@ class AddNewShoppingListFragment : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentAddNewShoppingListBinding>(inflater,
             R.layout.fragment_add_new_shopping_list, container, false)
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
 
-        //----------------------ViewModel----------------------
+        //=======================ViewModel=======================
         val viewModelFactory = AddNewShoppingListViewModelFactory(dao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(AddNewShoppingListViewModel::class.java)
@@ -42,8 +42,6 @@ class AddNewShoppingListFragment : DialogFragment() {
             else
                 Toast.makeText(application,  it.context.resources.getString(R.string.enter_name), Toast.LENGTH_SHORT).show()
         }
-
         return binding.root
     }
-
 }

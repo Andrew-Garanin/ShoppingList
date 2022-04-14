@@ -18,13 +18,8 @@ class CopyShoppingListViewModel(val dao: ShoppingListDatabaseDao, application: A
     val shoppingListId: MutableLiveData<Int>
         get() = _shoppingListId
 
-    //private val _newshoppingListId = MutableLiveData<Int>()
     var newshoppingListId = dao.getLastShoppingListId()
-    //    get() = _newshoppingListId
-
-    private val _PurchasesToCopy = MutableLiveData<List<Purchase>>()
     var PurchasesToCopy : LiveData<List<Purchase>>
-        //get() = _PurchasesToCopy
 
     init{
         _shoppingListId.value = shoppingListId
@@ -47,27 +42,17 @@ class CopyShoppingListViewModel(val dao: ShoppingListDatabaseDao, application: A
         }
     }
 
-//    fun onGetLastShoppingListId(){
-//        uiScope.launch {
-//            getLastShoppingListId()
-//        }
-//    }
-
     private fun getPurchasesByShoppingListID(key: Int): LiveData<List<Purchase>> {
         return dao.getPurchasesByShoppingListID(key)
     }
 
     fun onCopyPurchases(){
         PurchasesToCopy.value?.forEach{
-
             val newPurchase = it.copy(id=0,shopping_list_id = newshoppingListId.value!!+1)
-
             uiScope.launch {
                 addNewPurchase(newPurchase)
             }
         }
-
-
     }
 
     private suspend fun addNewPurchase(purchase: Purchase) {

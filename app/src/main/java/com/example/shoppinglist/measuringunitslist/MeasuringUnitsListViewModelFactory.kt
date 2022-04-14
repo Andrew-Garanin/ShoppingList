@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.shoppinglist.database.ShoppingListDatabaseDao
-import com.example.shoppinglist.purchasenameslist.PurchaseNamesListViewModel
 
 class MeasuringUnitsListViewModelFactory(
     private val dao: ShoppingListDatabaseDao,

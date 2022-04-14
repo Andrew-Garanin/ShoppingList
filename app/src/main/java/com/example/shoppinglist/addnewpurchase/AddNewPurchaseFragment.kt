@@ -1,7 +1,6 @@
 package com.example.shoppinglist.addnewpurchase
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,33 +13,28 @@ import com.example.shoppinglist.database.ShoppingListDatabase
 import com.example.shoppinglist.databinding.FragmentAddNewPurchaseBinding
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.shoppinglist.database.MeasuringUnit
 import com.example.shoppinglist.database.PurchaseName
-import com.example.shoppinglist.title.TitleFragmentDirections
 
 
 class AddNewPurchaseFragment : DialogFragment() {
-
     private lateinit var viewModel: AddNewPurchaseViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentAddNewPurchaseBinding>(inflater,
             R.layout.fragment_add_new_purchase, container, false)
         val addNewPurchaseFragmentArgs by navArgs<AddNewPurchaseFragmentArgs>()
         val application = requireNotNull(this.activity).application
         val dao = ShoppingListDatabase.getInstance(application).getShoppingListDatabaseDao()
 
-        //----------------------ViewModel----------------------
+        //=========================ViewModel=========================
         val viewModelFactory = AddNewPurchaseViewModelFactory(dao, application, addNewPurchaseFragmentArgs.shoppingListId)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(AddNewPurchaseViewModel::class.java)
-
 
         binding.spinnerName.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -61,7 +55,7 @@ class AddNewPurchaseFragment : DialogFragment() {
         }
 
         viewModel.purchaseNames.observe(viewLifecycleOwner, { newPurchaseNames ->
-            val arrayAdapter = context?.let { ArrayAdapter<PurchaseName>(it, R.layout.support_simple_spinner_dropdown_item, newPurchaseNames) }
+            val arrayAdapter = context?.let { ArrayAdapter(it, R.layout.support_simple_spinner_dropdown_item, newPurchaseNames) }
             arrayAdapter?.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
             binding.spinnerName.adapter = arrayAdapter
 
@@ -74,10 +68,8 @@ class AddNewPurchaseFragment : DialogFragment() {
         })
 
         viewModel.measuringUnits.observe(viewLifecycleOwner, { newMeasuringUnits ->
-            val arrayAdapter = context?.let { ArrayAdapter<MeasuringUnit>(it, R.layout.support_simple_spinner_dropdown_item, newMeasuringUnits) }
-
+            val arrayAdapter = context?.let { ArrayAdapter(it, R.layout.support_simple_spinner_dropdown_item, newMeasuringUnits) }
             arrayAdapter?.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-
             binding.spinnerMeasureUnit.adapter = arrayAdapter
 
             if (viewModel.measuringUnitSpinnerPosition.value == null)
@@ -102,7 +94,6 @@ class AddNewPurchaseFragment : DialogFragment() {
         binding.close.setOnClickListener {
             dismiss()
         }
-
         return binding.root
     }
 }
